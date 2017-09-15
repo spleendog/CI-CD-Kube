@@ -114,6 +114,6 @@ deploy:
 #        certificate-authority: ${KUBE_CA_CERT} 
 #        client-certificate: ${KUBE_ADMIN_CERT}
 #        client-key: ${KUBE_ADMIN_KEY}
-        token: ${KUBE_ADMIN_KEY}
+#        token: ${KUBE_ADMIN_KEY}
         insecure-skip-tls-verify: true
-        command: --namespace ${KUBE_NAMESPACE} apply -f . 
+        command: --kubeconfig kubeconfig --namespace ${KUBE_NAMESPACE} apply -f . 
