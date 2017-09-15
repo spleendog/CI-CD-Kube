@@ -112,4 +112,4 @@ deploy:
         username: ${KUBE_USERNAME}
         password: ${KUBE_PASSWORD}
         insecure-skip-tls-verify: true
-        command: -n ${KUBE_NAMESPACE} apply -f . 
+        command: apply -f .
