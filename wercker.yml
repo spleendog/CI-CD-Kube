@@ -110,6 +110,9 @@ deploy:
         cwd: $WERCKER_ROOT/kubernetes/deployment
         server: ${KUBE_ENDPOINT}
         username: ${KUBE_USERNAME}
-        password: ${KUBE_PASSWORD}
+#        password: ${KUBE_PASSWORD}
+        certificate-authority: ${KUBE_CA_CERT} 
+        client-certificate: ${KUBE_ADMIN_CERT}
+        client-key: ${KUBE_ADMIN_KEY}
         insecure-skip-tls-verify: true
         command: --namespace ${KUBE_NAMESPACE} apply -f . 
