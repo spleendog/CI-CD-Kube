@@ -1,7 +1,7 @@
 Create a Kubernetes cluster with full CI/CD
 ==============================================
 ----
-|  |
+|sb|
 ----
 
 This tutorial shows you how to create a production quality Kubernetes cluster
