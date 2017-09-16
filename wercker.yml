@@ -107,12 +107,13 @@ deploy:
     
     - script:
         name: kubeconfig template file population
+        cwd: $WERCKER_ROOT/kubernetes/deployment
         code: |
-          sed -i -e 's|KUBE_CA_CERT|'"${KUBE_CA_CERT}"'|g' $WERCKER_ROOT/kubeconfig
-          sed -i -e 's|KUBE_ENDPOINT|'"${KUBE_ENDPOINT}"'|g' $WERCKER_ROOT/kubeconfig
-          sed -i -e 's|KUBE_ADMIN_CERT|'"${KUBE_ADMIN_CERT}"'|g' $WERCKER_ROOT/kubeconfig
-          sed -i -e 's|KUBE_ADMIN_KEY|'"${KUBE_ADMIN_KEY}"'|g' $WERCKER_ROOT/kubeconfig
-          sed -i -e 's|KUBE_USERNAME|'"${KUBE_USERNAME}"'|g' $WERCKER_ROOT/kubeconfig
+          sed -i -e 's|KUBE_CA_CERT|'"${KUBE_CA_CERT}"'|g' kubeconfig
+          sed -i -e 's|KUBE_ENDPOINT|'"${KUBE_ENDPOINT}"'|g' kubeconfig
+          sed -i -e 's|KUBE_ADMIN_CERT|'"${KUBE_ADMIN_CERT}"'|g' kubeconfig
+          sed -i -e 's|KUBE_ADMIN_KEY|'"${KUBE_ADMIN_KEY}"'|g' kubeconfig
+          sed -i -e 's|KUBE_USERNAME|'"${KUBE_USERNAME}"'|g' kubeconfig
 
     - kubectl:
         cwd: $WERCKER_ROOT/kubernetes/deployment
@@ -124,7 +125,7 @@ deploy:
 #        client-key: ${KUBE_ADMIN_KEY}
 #        token: ${KUBE_ADMIN_KEY}
         insecure-skip-tls-verify: true
-        command: --kubeconfig $WERCKER_ROOT/kubeconfig --namespace ${KUBE_NAMESPACE} apply -f .
+        command: --kubeconfig kubeconfig --namespace ${KUBE_NAMESPACE} apply -f .
 
     - script:
         name: remove kubeconfig file
