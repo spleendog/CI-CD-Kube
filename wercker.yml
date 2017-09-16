@@ -129,5 +129,6 @@ deploy:
         command: --kubeconfig kubeconfig --namespace ${KUBE_NAMESPACE} apply -f .
 
     - script:
+        cwd: $WERCKER_ROOT/kubernetes/deployment
         name: remove kubeconfig file
-        code: rm $WERCKER_ROOT/kubeconfig 
+        code: rm kubeconfig 
